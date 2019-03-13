@@ -1,0 +1,1 @@
+https://testautomationu.applitools.com/automating-your-api-tests-with-rest-assured/
