@@ -17,9 +17,12 @@ public class Chapter3Test {
     @Test
     @UseDataProvider("dataProviderWithPlaces")
     public void parametrizedTest(String country, String zipCode, String placeName) {
-        given().pathParam("countryCode", country).pathParam("zipCode", zipCode)
-                .get(BASE_URI+"{countryCode}/{zipCode}")
-                .then().assertThat().body("places[0].'place name'", equalTo(placeName));
+        given()
+            .pathParam("countryCode", country).pathParam("zipCode", zipCode)
+        .get(BASE_URI+"{countryCode}/{zipCode}")
+        .then()
+            .assertThat()
+                .body("places[0].'place name'", equalTo(placeName));
 
     }
 
