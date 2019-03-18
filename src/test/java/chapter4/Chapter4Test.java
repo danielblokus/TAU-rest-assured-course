@@ -41,7 +41,7 @@ public class Chapter4Test {
         .then()
             .assertThat()
                 .statusCode(HttpStatusCodes.SUCCESS)
-                .and()
+            .and()
                 .contentType(ContentType.JSON);
     }
 
