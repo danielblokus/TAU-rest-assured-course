@@ -6,11 +6,13 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
 
 public class Chapter4Test {
 
@@ -56,6 +58,21 @@ public class Chapter4Test {
         .and()
             .assertThat()
                 .body("places[0].'place name'", equalTo(PLACE_NAME));
+    }
+
+    @Test
+    public void checkPlaceNameFromExtractedResponseBody() {
+        String placeName =
+
+        given()
+            .spec(requestSpecification)
+        .when()
+            .get("br/01000-000")
+        .then()
+            .extract()
+            .path("places[0].'place name'");
+
+        assertEquals(placeName, PLACE_NAME);
     }
 
 }
